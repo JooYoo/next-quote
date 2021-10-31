@@ -16,6 +16,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Home page
         </h1>
+        <div className="mt-4 text-blue-400">Tailwind installed</div>
       </main>
     </div>
   )
