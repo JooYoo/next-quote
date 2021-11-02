@@ -1,9 +1,14 @@
-import type { NextPage } from 'next'
+
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { InferGetStaticPropsType } from "next";
 import Head from 'next/head'
+import Link from "next/link";
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 
-const Home: NextPage = () => {
+export default function Home({ books }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,10 +21,39 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Home page
         </h1>
-        <div className="mt-4 text-blue-400">Tailwind installed</div>
+        {/* TODO: remove: check gray-matter */}
+        <div className="mt-4 text-blue-400">{books[0].frontmatter.title}</div>
+        <div>{books[0].slug}</div>
       </main>
     </div>
-  )
+  );
 }
 
-export default Home
+export async function getStaticProps(){
+  // get data
+  const files = fs.readdirSync(path.join("data/books"))
+
+  // get file names without extension
+  const books = files.map(fileName =>{
+    // create slug
+    const slug = fileName.replace(".md", "")
+
+    // get frontmatter
+    const markdownWithMeta = fs.readFileSync(path.join("data/books", fileName), "utf-8")
+
+    // get md
+    const {data: frontmatter, content} = matter(markdownWithMeta)
+
+    return {
+      slug,
+      frontmatter,
+      content
+    }
+  })
+
+  return{
+    props: {
+      books
+    }
+  }
+}
