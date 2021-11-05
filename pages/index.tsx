@@ -9,6 +9,8 @@ import styles from '../styles/Home.module.scss';
 
 export default function Home({
   books,
+  rdmQuote,
+  rdmHighlight,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={styles.container}>
@@ -19,10 +21,12 @@ export default function Home({
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Home page</h1>
-        {/* TODO: remove: check gray-matter */}
-        <div className="mt-4 text-blue-400">{books[0].frontmatter.title}</div>
-        <div>{books[0].slug}</div>
+        <div className="quote-card text-left p-5 border-2 border-gray-400 rounded-md shadow-md">
+          <div className="text-xl">{rdmHighlight}</div>
+          <div className="text-sm text-left text-gray-400">
+            ⌈ {rdmQuote.book} ⌋ • {rdmQuote.chapter}
+          </div>
+        </div>
       </main>
     </div>
   );
@@ -53,9 +57,7 @@ export async function getStaticProps() {
     };
   });
 
-  /* -------------------------------------------------------------------------- */
-  /*                                  get quote                                 */
-  /* -------------------------------------------------------------------------- */
+  /* -------------------------------- get quote ------------------------------- */
 
   // 🚩 get chapters & highlights
   const getChaptersHighlights = (content: string) => {
@@ -104,16 +106,13 @@ export async function getStaticProps() {
     return res;
   };
 
-  /* -------------------------------------------------------------------------- */
-  /*                                random quote                                */
-  /* -------------------------------------------------------------------------- */
+  /* ---------------------------- random highlight ---------------------------- */
 
   // get random book index
   function getRdmInt(max: number) {
     return Math.floor(Math.random() * max);
   }
-  const booksLength: number = books.length;
-  const rdmBookInx: number = getRdmInt(booksLength);
+  const rdmBookInx: number = getRdmInt(books.length);
 
   // get rdmBook quotes
   const quotes: any = getQuotes(
@@ -121,15 +120,19 @@ export async function getStaticProps() {
     books[rdmBookInx].content
   );
 
-  // TODO: get rdmChapterQuote
+  // get rdmChapterQuote
+  const rdmQuoteInx: number = getRdmInt(quotes.length);
+  const rdmQuote: any = quotes[rdmQuoteInx];
 
-  // TODO: get rdmHighlight
-  console.log(quotes.length);
-  console.log(quotes[1]);
+  // get rdmHighlight
+  const rdmHighlightInx: number = getRdmInt(rdmQuote.highlights.length);
+  const rdmHighlight: string = rdmQuote.highlights[rdmHighlightInx];
 
   return {
     props: {
       books,
+      rdmQuote,
+      rdmHighlight,
     },
   };
 }
