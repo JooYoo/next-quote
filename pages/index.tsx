@@ -6,6 +6,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
+import Quote from '../components/quote';
 
 export default function Home({
   books,
@@ -21,12 +22,7 @@ export default function Home({
       </Head>
 
       <main className={styles.main}>
-        <div className="quote-card text-left p-5 border-2 border-gray-400 rounded-md shadow-md">
-          <div className="text-xl">{rdmHighlight}</div>
-          <div className="text-sm text-left text-gray-400">
-            ⌈ {rdmQuote.book} ⌋ • {rdmQuote.chapter}
-          </div>
-        </div>
+        <Quote rdmHighlight={rdmHighlight} rdmQuote={rdmQuote} />
       </main>
     </div>
   );
