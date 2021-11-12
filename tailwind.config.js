@@ -3,10 +3,14 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
+    rotate: {
+      '270': '270deg',
+    }
   },
   variants: {
     extend: {
       scale: ['hover'],
+      rotate: ['active'],
     },
   },
   plugins: [],

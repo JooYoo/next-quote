@@ -26,7 +26,7 @@ export default function Home({
         <Quote rdmHighlight={rdmHighlight} rdmQuote={rdmQuote} />
 
         <Link href="/">
-          <button className="absolute right-10 bottom-10 text-6xl transform transition-all hover:scale-75">
+          <button className="absolute right-10 bottom-10 text-6xl transform transition-all duration-300 hover:scale-95 active:rotate-270">
             🎲
           </button>
         </Link>
