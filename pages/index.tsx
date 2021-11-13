@@ -8,12 +8,42 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
 import Quote from '../components/Quote';
 import { getRdmInt, getQuotes } from '../util/utils';
+import { useState } from 'react';
 
 export default function Home({
   books,
   rdmQuote,
   rdmHighlight,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const [rQuote, setRQuote] = useState(rdmQuote);
+  const [rHighlight, setRHighlight] = useState(rdmHighlight);
+
+  const displayRdm = () => {
+    // FIXME: refactor
+    /* ---------------------------- random highlight ---------------------------- */
+
+    // get random book index
+    const rdmBookInx: number = getRdmInt(books.length);
+
+    // get rdmBook quotes
+    const quotes: any = getQuotes(
+      books[rdmBookInx].frontmatter.title,
+      books[rdmBookInx].content
+    );
+
+    // get rdmChapterQuote
+    const rdmQuoteInx: number = getRdmInt(quotes.length);
+    const rdmQuote: any = quotes[rdmQuoteInx];
+
+    // get rdmHighlight
+    const rdmHighlightInx: number = getRdmInt(rdmQuote.highlights.length);
+    const rdmHighlight: string = rdmQuote.highlights[rdmHighlightInx];
+
+    // update state
+    setRQuote(rdmQuote);
+    setRHighlight(rdmHighlight);
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -23,13 +53,14 @@ export default function Home({
       </Head>
 
       <main className={styles.main}>
-        <Quote rdmHighlight={rdmHighlight} rdmQuote={rdmQuote} />
+        <Quote rdmHighlight={rHighlight} rdmQuote={rQuote} />
 
-        <Link href="/">
-          <button className="absolute right-10 bottom-10 text-6xl transform transition-all duration-300 hover:scale-95 active:rotate-270">
-            🎲
-          </button>
-        </Link>
+        <button
+          className="absolute right-10 bottom-10 text-6xl transform transition-all duration-300 hover:scale-95 active:rotate-270"
+          onClick={displayRdm}
+        >
+          🎲
+        </button>
       </main>
     </div>
   );
