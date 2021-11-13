@@ -8,7 +8,7 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
 import Quote from '../components/Quote';
 import { getRdmInt, getQuotes } from '../util/utils';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Home({
   books,
@@ -17,6 +17,11 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [rQuote, setRQuote] = useState(rdmQuote);
   const [rHighlight, setRHighlight] = useState(rdmHighlight);
+
+  // get init rdm
+  useEffect(() => {
+    displayRdm();
+  }, []);
 
   const displayRdm = () => {
     // FIXME: refactor
