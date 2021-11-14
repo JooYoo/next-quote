@@ -3,11 +3,9 @@ import path from 'path';
 import matter from 'gray-matter';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
 import styles from '../styles/Home.module.scss';
 import Quote from '../components/Quote';
-import { getRdmInt, getQuotes } from '../util/utils';
+import { displayRdm } from '../util/utils';
 import { useEffect, useState } from 'react';
 
 export default function Home({
@@ -20,33 +18,13 @@ export default function Home({
 
   // get init rdm
   useEffect(() => {
-    displayRdm();
+    updateRdm();
   }, []);
 
-  const displayRdm = () => {
-    // FIXME: refactor
-    /* ---------------------------- random highlight ---------------------------- */
-
-    // get random book index
-    const rdmBookInx: number = getRdmInt(books.length);
-
-    // get rdmBook quotes
-    const quotes: any = getQuotes(
-      books[rdmBookInx].frontmatter.title,
-      books[rdmBookInx].content
-    );
-
-    // get rdmChapterQuote
-    const rdmQuoteInx: number = getRdmInt(quotes.length);
-    const rdmQuote: any = quotes[rdmQuoteInx];
-
-    // get rdmHighlight
-    const rdmHighlightInx: number = getRdmInt(rdmQuote.highlights.length);
-    const rdmHighlight: string = rdmQuote.highlights[rdmHighlightInx];
-
-    // update state
-    setRQuote(rdmQuote);
-    setRHighlight(rdmHighlight);
+  // update state: rdmHighlight
+  const updateRdm = () => {
+    setRQuote(displayRdm(books).rdmQuote);
+    setRHighlight(displayRdm(books).rdmHighlight);
   };
 
   return (
@@ -62,7 +40,7 @@ export default function Home({
 
         <button
           className="absolute right-10 bottom-10 text-6xl transform transition-all duration-300 hover:scale-95 active:rotate-270"
-          onClick={displayRdm}
+          onClick={updateRdm}
         >
           🎲
         </button>
@@ -98,28 +76,11 @@ export async function getStaticProps() {
 
   /* ---------------------------- random highlight ---------------------------- */
 
-  // get random book index
-  const rdmBookInx: number = getRdmInt(books.length);
-
-  // get rdmBook quotes
-  const quotes: any = getQuotes(
-    books[rdmBookInx].frontmatter.title,
-    books[rdmBookInx].content
-  );
-
-  // get rdmChapterQuote
-  const rdmQuoteInx: number = getRdmInt(quotes.length);
-  const rdmQuote: any = quotes[rdmQuoteInx];
-
-  // get rdmHighlight
-  const rdmHighlightInx: number = getRdmInt(rdmQuote.highlights.length);
-  const rdmHighlight: string = rdmQuote.highlights[rdmHighlightInx];
-
   return {
     props: {
       books,
-      rdmQuote,
-      rdmHighlight,
+      rdmQuote: displayRdm(books).rdmQuote,
+      rdmHighlight: displayRdm(books).rdmHighlight,
     },
   };
 }

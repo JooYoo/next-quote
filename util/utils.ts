@@ -54,3 +54,30 @@
   export function getRdmInt(max: number) {
     return Math.floor(Math.random() * max);
   }
+
+  /* ------------------ get rdmChapterQuote, get rdmHighlight ----------------- */
+
+  export const displayRdm = (books: any) => {
+
+    // get random book index
+    const rdmBookInx: number = getRdmInt(books.length);
+
+    // get rdmBook quotes
+    const quotes: any = getQuotes(
+      books[rdmBookInx].frontmatter.title,
+      books[rdmBookInx].content
+    );
+
+    // get rdmChapterQuote
+    const rdmQuoteInx: number = getRdmInt(quotes.length);
+    const rdmQuote: any = quotes[rdmQuoteInx];
+
+    // get rdmHighlight
+    const rdmHighlightInx: number = getRdmInt(rdmQuote.highlights.length);
+    const rdmHighlight: string = rdmQuote.highlights[rdmHighlightInx];
+
+    return {
+      rdmQuote,
+      rdmHighlight,
+    };
+  }
