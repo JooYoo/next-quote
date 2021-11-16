@@ -1,5 +1,4 @@
-![Untitled](https://user-images.githubusercontent.com/12739843/141785382-65669b08-229f-42ad-8fe6-7b99c6f41a5a.png)
-
+![next-quote](https://user-images.githubusercontent.com/12739843/141909627-8617d8b7-24e8-47a6-8e30-5895785f7837.gif)
 
 ## About
 
