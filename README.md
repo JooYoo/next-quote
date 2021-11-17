@@ -1,20 +1,34 @@
-![next-quote](https://user-images.githubusercontent.com/12739843/141909627-8617d8b7-24e8-47a6-8e30-5895785f7837.gif)
+<h1 align="center">Quote</h1>
+<div align="center">2021.10 ~ 2021.11</div>
 
-## About
+<p align="center">
+  <strong>
+    <a href="https://nextquote.vercel.app/">🚀 &nbsp; Demo</a>
+  </strong>
+</p>
+
+# About
 
 A web app to present a quote randomly from the book, which I have read.
-
 Set the web app as the browser new tab default page, so I can review those quotes everytime when I open a new tab in browser. 
 
-## Support Plattform
+# Preview
+
+<p align="center">
+<kbd>
+<img src="https://user-images.githubusercontent.com/12739843/141909627-8617d8b7-24e8-47a6-8e30-5895785f7837.gif" />
+</kbd>
+</p>
+
+# Support Plattform
 
 - Web
 
-## User story
+# User story
 
 As a reader I want to show me the quotes which I collect during book reading, so that I can review those quotes easily.
 
-## Technologies
+# Technologies
 
 - Next.js
 - TypeScript
@@ -24,13 +38,13 @@ As a reader I want to show me the quotes which I collect during book reading, so
 - gray-matter
 - Vercel
 
-## Setup
+# Setup
 
 1. install dependencies: `npm i`
 2. run the dev server locally: `npm run dev`
 3. open `[http://localhost:3000](http://localhost:3000)` to see the result
 
-## How to collect the quotes
+# How to collect the quotes
 
 1. read book and collect quotes via WeChat Reading（微信读书）
 2. create markdown file and paste the quotes from WeChat Reading
