@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Quote</h1>
+<div align="center">2021.10 ~ 2021.11</div>
 
-## Getting Started
+<p align="center">
+  <strong>
+    <a href="https://nextquote.vercel.app/">🚀 &nbsp; Demo</a>
+  </strong>
+</p>
 
-First, run the development server:
+# About
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+A web app to present a quote randomly from the book, which I have read.
+Set the web app as the browser new tab default page, so I can review those quotes everytime when I open a new tab in browser. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Preview
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<p align="center">
+<kbd>
+<img src="https://user-images.githubusercontent.com/12739843/141909627-8617d8b7-24e8-47a6-8e30-5895785f7837.gif" />
+</kbd>
+</p>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# Support Plattform
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Web
 
-## Learn More
+# User story
 
-To learn more about Next.js, take a look at the following resources:
+As a reader I want to show me the quotes which I collect during book reading, so that I can review those quotes easily.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Technologies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Next.js
+- TypeScript
+- Sass
+- Tailwind CSS
+- Markdown
+- gray-matter
+- Vercel
 
-## Deploy on Vercel
+# Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. install dependencies: `npm i`
+2. run the dev server locally: `npm run dev`
+3. open `[http://localhost:3000](http://localhost:3000)` to see the result
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# How to collect the quotes
+
+1. read book and collect quotes via WeChat Reading（微信读书）
+2. create markdown file and paste the quotes from WeChat Reading
+3. add frontmatter to the markdown file
+4. save the file into `data/books`
