@@ -15,11 +15,11 @@ const ThemeToggle = () => {
     // following logic will only run when component mounted
     if (!mounted) return null;
 
-    // get current system theme
+    //FIXME: get current system theme
     const currentTheme = theme === 'system' ? systemTheme : theme;
 
     // toggle light/dark
-    if (currentTheme === 'dark') {
+    if (theme === 'dark') {
       return (
         <MoonIcon
           className="w-7 h-7"
