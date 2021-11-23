@@ -8,6 +8,7 @@ import Quote from '../components/Quote';
 import { displayRdm } from '../util/utils';
 import { useEffect, useState } from 'react';
 import ThemeToggle from '../components/ThemeToggle';
+import useGlobalShortcut from '../hooks/useGlobalShortcut';
 
 export default function Home({
   books,
@@ -22,19 +23,14 @@ export default function Home({
     updateRdm();
   }, []);
 
-  // FIXME: refactor
   // press Space to update Quote
-  useEffect(() => {
-    const onSpace = (ev: KeyboardEvent) => {
+  useGlobalShortcut({
+    keyup(ev: any) {
       if (ev.key === ' ') {
         updateRdm();
       }
-    };
-    window.addEventListener('keyup', onSpace);
-    return () => {
-      window.removeEventListener('keyup', onSpace);
-    };
-  }, []);
+    },
+  });
 
   // update state: rdmHighlight
   const updateRdm = () => {
