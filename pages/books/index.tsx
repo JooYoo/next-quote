@@ -2,17 +2,21 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { InferGetStaticPropsType } from 'next';
+import Image from 'next/image';
 
-const Books = ({
-  hello,
-  books,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Books = ({ books }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
-      <div>Books index page</div>
-      <div>{hello}</div>
+      <h3>Books index page</h3>
       {books.map((book) => (
-        <li key={book.slug}>{book.frontmatter.title}</li>
+        <li key={book.slug}>
+          {book.frontmatter.readYear}・{book.frontmatter.title}
+          <Image
+            src={`/img/covers/${book.slug}.jpg`}
+            width="120"
+            height="160"
+          />
+        </li>
       ))}
     </div>
   );
@@ -48,7 +52,6 @@ export async function getStaticProps() {
   return {
     props: {
       books,
-      hello: 'props from getStaticProps',
     },
   };
 }
