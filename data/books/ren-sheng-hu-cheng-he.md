@@ -1,5 +1,6 @@
 ---
-title: 人生护城河：如何建立自己真正的优势
+title: 人生护城河
+subtitle: 如何建立自己真正的优势
 author: 张辉
 readYear: 2021
 ---

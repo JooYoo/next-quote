@@ -6,18 +6,29 @@ import Image from 'next/image';
 
 const Books = ({ books }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <div>
-      <h3>Books index page</h3>
-      {books.map((book) => (
-        <li key={book.slug}>
-          {book.frontmatter.readYear}・{book.frontmatter.title}
-          <Image
-            src={`/img/covers/${book.slug}.jpg`}
-            width="120"
-            height="160"
-          />
-        </li>
-      ))}
+    <div className="p-10">
+      <h3 className="text-4xl font-extralight">Books</h3>
+
+      <div className="mt-10 mb-5">
+        <hr className="border-gray-800" />
+        <h4 className="mt-5 text-xl font-medium text-left">2021</h4>
+      </div>
+      <div className="flex justify-left">
+        {books.map((book) => (
+          <li className="flex flex-col list-none mr-5" key={book.slug}>
+            <Image
+              src={`/img/covers/${book.slug}.jpg`}
+              width="120"
+              height="160"
+              className="rounded-md"
+            />
+            {/* {book.frontmatter.readYear}・ */}
+            <span className="mt-2 w-28 text-sm font-extralight">
+              {book.frontmatter.title}
+            </span>
+          </li>
+        ))}
+      </div>
     </div>
   );
 };

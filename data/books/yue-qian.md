@@ -1,5 +1,6 @@
 ---
-title: 跃迁：成为高手的技术
+title: 跃迁
+subtitle: 成为高手的技术
 author: 古典
 readYear: 2021
 ---
