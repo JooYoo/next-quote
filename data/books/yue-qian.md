@@ -2,7 +2,7 @@
 title: 跃迁
 subtitle: 成为高手的技术
 author: 古典
-readYear: 2021
+readYear: 2022
 ---
 
 **序言 高手的三个境界**
