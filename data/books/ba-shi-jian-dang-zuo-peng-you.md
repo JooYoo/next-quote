@@ -3,6 +3,7 @@ title: 把时间当作朋友
 subtitle:
 author: 李笑来
 readYear: 2021
+slug: ba-shi-jian-dang-zuo-peng-you
 ---
 
 **第 1 版前言**
