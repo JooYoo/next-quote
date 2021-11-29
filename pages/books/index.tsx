@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
+import { getGroupedBooks } from '../../util/utils';
 
 const Books = ({
   books,
@@ -77,31 +78,16 @@ export async function getStaticProps() {
 
   /* ------------- group data to key-value-pairs based on readYear ------------ */
 
-  // get only frontmatters
+  // get only frontmatters as array
   const rawGroupedBookInfo: any = [];
   books.forEach((book) => {
     rawGroupedBookInfo.push(book.frontmatter);
   });
 
-  // group array by read-year to key-value-pair
-  function groupBy(arr: any, property: any) {
-    return arr.reduce(function (memo: any, x: any) {
-      if (!memo[x[property]]) {
-        memo[x[property]] = [];
-      }
-      memo[x[property]].push(x);
-      return memo;
-    }, {});
-  }
-  // convert key-value-pair to array
-  const groupedBooks: any[] = Object.values(
-    groupBy(rawGroupedBookInfo, 'readYear')
-  );
-
   return {
     props: {
       books,
-      groupedBooks,
+      groupedBooks: getGroupedBooks(rawGroupedBookInfo),
     },
   };
 }

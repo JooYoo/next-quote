@@ -81,3 +81,24 @@
       rdmHighlight,
     };
   }
+
+  /* -------------------------------------------------------------------------- */
+  /*                     group book frontmatters by readYear                    */
+  /* -------------------------------------------------------------------------- */
+
+   // group array by read-year to key-value-pair
+  function groupBy(arr: any, property: any) {
+    return arr.reduce(function (memo: any, x: any) {
+      if (!memo[x[property]]) {
+        memo[x[property]] = [];
+      }
+      memo[x[property]].push(x);
+      return memo;
+    }, {});
+  }
+
+  // convert key-value-pair to array
+  export const getGroupedBooks=(rawGroupedBookInfo: any[]):any[]=>{
+    const booksKV = groupBy(rawGroupedBookInfo, 'readYear')
+    return Object.values(booksKV)
+  }
