@@ -46,7 +46,6 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ThemeToggle />
       <main className={styles.main}>
         <Quote rdmHighlight={rHighlight} rdmQuote={rQuote} />
 

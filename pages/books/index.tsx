@@ -12,7 +12,6 @@ const Books = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
-      <ThemeToggle />
       <main>
         <div className="p-10">
           <h3 className="text-4xl font-extralight">Books</h3>
