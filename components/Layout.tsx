@@ -1,9 +1,10 @@
 import ThemeToggle from './ThemeToggle';
+import Navbar from './Navbar';
 
 const Layout = ({ children }: any) => {
   return (
     <div>
-      <ThemeToggle />
+      <Navbar />
       {children}
     </div>
   );

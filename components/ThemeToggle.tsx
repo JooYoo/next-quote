@@ -38,7 +38,7 @@ const ThemeToggle = () => {
     }
   };
 
-  return <div className="absolute top-10 right-10">{renderThemeChnager()}</div>;
+  return <div className="absolute top-4 right-6">{renderThemeChnager()}</div>;
 };
 
 export default ThemeToggle;
