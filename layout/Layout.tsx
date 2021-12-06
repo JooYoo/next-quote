@@ -4,10 +4,10 @@ import Navbar from '../components/Navbar';
 const Layout = ({ children }: any) => {
   return (
     <div className="flex flex-col h-screen">
-      <div className="sticky top-0 z-10 bg-white  dark:bg-black">
+      <div className="sticky top-0 z-10">
         <Navbar />
       </div>
-      <div>{children}</div>
+      {children}
     </div>
   );
 };

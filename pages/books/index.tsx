@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -12,6 +13,15 @@ const Books = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
+      <Head>
+        <title>Quote</title>
+        <meta
+          name="description"
+          content="A web app to present quotes randomly from the books, which I have read."
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
       <main>
         <div className="p-10">
           <h3 className="text-4xl font-extralight">Books</h3>
