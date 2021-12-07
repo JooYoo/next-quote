@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -43,11 +44,15 @@ const Books = ({
                       key={bookInfo.title}
                     >
                       <div className="relative w-32 h-48 shadow-md rounded-md">
-                        <Image
-                          src={`/img/covers/${bookInfo.slug}.jpg`}
-                          layout="fill"
-                          className="rounded-md"
-                        />
+                        <Link href={`/books/${bookInfo.slug}`}>
+                          <a>
+                            <Image
+                              src={`/img/covers/${bookInfo.slug}.jpg`}
+                              layout="fill"
+                              className="rounded-md"
+                            />
+                          </a>
+                        </Link>
                       </div>
 
                       <span className="mt-2 w-28 text-sm font-extralight">
