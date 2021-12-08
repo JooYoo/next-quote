@@ -2,13 +2,56 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
+import styleModule from '../../styles/BookDetail.module.scss';
+import React, { useEffect, useState } from 'react';
 
 const BookPage = ({ frontmatter, slug, content }: any) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    // Button is displayed after scrolling for 500 pixels
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
   return (
-    <div>
-      <h3>{frontmatter.title}</h3>
-      <h4>{frontmatter.subtitle}</h4>
-      <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
+    <div className="p-10">
+      {/* TODO: scroll to top: implement & note */}
+      {/* <div
+        className="fixed border-2 p-2 right-5 bottom-5 bg-red-100"
+        onClick={scrollToTop}
+      >
+        Go up!
+      </div> */}
+      <div className="mb-10">
+        <h3 className="text-center font-black text-3xl">{frontmatter.title}</h3>
+        <h4 className="text-center font-bold text-lg mb-3">
+          {frontmatter.subtitle}
+        </h4>
+        <div className="text-center">{frontmatter.author}</div>
+      </div>
+      <hr className="mb-10" />
+
+      <div
+        className={styleModule.chapter}
+        dangerouslySetInnerHTML={{ __html: marked(content) }}
+      ></div>
     </div>
   );
 };
