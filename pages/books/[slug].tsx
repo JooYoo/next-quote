@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { marked } from 'marked';
 import styleModule from '../../styles/BookDetail.module.scss';
 import React, { useEffect, useState } from 'react';
+import { ChevronUpIcon } from '@heroicons/react/outline';
 
 const BookPage = ({ frontmatter, slug, content }: any) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,13 +33,6 @@ const BookPage = ({ frontmatter, slug, content }: any) => {
 
   return (
     <div className="p-10">
-      {/* TODO: scroll to top: implement & note */}
-      {/* <div
-        className="fixed border-2 p-2 right-5 bottom-5 bg-red-100"
-        onClick={scrollToTop}
-      >
-        Go up!
-      </div> */}
       <div className="mb-10">
         <h3 className="text-center font-black text-3xl">{frontmatter.title}</h3>
         <h4 className="text-center font-bold text-lg mb-3">
@@ -52,6 +46,14 @@ const BookPage = ({ frontmatter, slug, content }: any) => {
         className={styleModule.chapter}
         dangerouslySetInnerHTML={{ __html: marked(content) }}
       ></div>
+
+      {isVisible && (
+        <ChevronUpIcon
+          className="fixed bottom-5 right-5 cursor-pointer w-10 h-10"
+          role="button"
+          onClick={scrollToTop}
+        />
+      )}
     </div>
   );
 };
