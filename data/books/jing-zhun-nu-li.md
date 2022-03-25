@@ -1,7 +1,7 @@
 ---
 title: 精准努力
 subtitle: 刘媛媛的逆袭课
-author:
+author: 刘媛媛
 readYear: 2022
 slug: jing-zhun-nu-li
 ---
