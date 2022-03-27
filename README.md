@@ -10,7 +10,7 @@
 # About
 
 A web app to present a quote randomly from the book, which I have read.
-Set the web app as the browser new tab default page, so I can review those quotes everytime when I open a new tab in browser. 
+Set the web app as the browser new tab default page, so I can review those quotes everytime when I open a new tab in browser.
 
 # Preview
 
@@ -50,3 +50,7 @@ As a reader I want to show me the quotes which I collect during book reading, so
 2. create markdown file and paste the quotes from WeChat Reading
 3. add frontmatter to the markdown file
 4. save the file into `data/books`
+
+# Todos
+
+- [] bug: homepage, quote dosen't match the book title
