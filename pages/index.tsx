@@ -34,8 +34,12 @@ export default function Home({
 
   // update state: rdmHighlight
   const updateRdm = () => {
-    setRQuote(displayRdm(books).rdmQuote);
-    setRHighlight(displayRdm(books).rdmHighlight);
+    // get target book
+    let targetBook = displayRdm(books)
+
+    // get rdm-quote
+    setRQuote(targetBook.rdmQuote);
+    setRHighlight(targetBook.rdmHighlight);
   };
 
   return (
@@ -66,12 +70,13 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  // get data
+  // get md-fileName and extensions
+  // ["booka.md", "bookb.md"]
   const files = fs.readdirSync(path.join('data/books'));
 
   // get file names without extension
   const books = files.map((fileName) => {
-    // create slug
+    // create slug: file-name without extension
     const slug = fileName.replace('.md', '');
 
     // get frontmatter
@@ -90,11 +95,14 @@ export async function getStaticProps() {
     };
   });
 
+  // get target, only create one instance for rdmQuote and rdmHighlight
+  let targetBook = displayRdm(books)
+
   return {
     props: {
       books,
-      rdmQuote: displayRdm(books).rdmQuote,
-      rdmHighlight: displayRdm(books).rdmHighlight,
+      rdmQuote: targetBook.rdmQuote,
+      rdmHighlight: targetBook.rdmHighlight,
     },
   };
 }
