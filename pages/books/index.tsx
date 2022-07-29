@@ -37,10 +37,10 @@ const Books = ({
                   </h4>
                 </div>
 
-                <div className="flex justify-left">
+                <div className="flex flex-wrap justify-left">
                   {group.map((bookInfo: any) => (
                     <li
-                      className="flex flex-col list-none mr-5"
+                      className="flex flex-col list-none mr-5 my-3"
                       key={bookInfo.title}
                     >
                       <div className="relative w-32 h-48 shadow-md rounded-md">
